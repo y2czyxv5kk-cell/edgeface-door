@@ -1,0 +1,19 @@
+# ===== PC / WSL2 开发环境依赖（demo、开发、教学用）=====
+# 安装：pip install -r requirements.txt
+# Python 版本：3.8 ~ 3.12 均可
+
+# 核心推理（ONNX 后端）
+insightface>=0.7.3        # 人脸检测/识别预训练模型（buffalo_s）+ 推理框架
+onnxruntime>=1.16         # ONNX 推理运行时（CPU）
+
+# 数值计算与图像处理
+numpy>=1.24
+opencv-python>=4.8        # 注意：仅 PC 用带 GUI 的版本；
+                          # 板端必须换 opencv-python-headless（见 requirements-board.txt）
+Pillow>=10.0              # 中文标签渲染（cv2.putText 不支持中文）
+
+# GUI（PyQt5）
+PyQt5>=5.15               # 登录界面 + 门禁界面
+
+# 注意：ollama（本地大模型）不属于 Python 依赖，
+# 单独安装：https://ollama.com/download 然后 `ollama pull qwen2.5:1.5b`

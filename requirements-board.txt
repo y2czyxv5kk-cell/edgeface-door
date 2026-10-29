@@ -1,0 +1,20 @@
+# ===== RK3588 板端依赖（兼容 RK3566/3568） =====
+# 注意：rknnlite-api 不是普通 pip 包，必须从 Rockchip 官方仓库下载
+# 对应板端 Python 版本（cp38/cp39/cp310）的 aarch64 whl 后本地安装：
+#   https://github.com/airockchip/rknn-toolkit2
+#   → rknn_toolkit_lite2/packages/rknnlite-2.x.x-cp38-cp38-manylinux_aarch64.whl
+#   pip install ./rknnlite-2.x.x-cp38-cp38-manylinux_aarch64.whl
+#
+# 版本必须与板端 /usr/lib/librknnrt.so 一致，否则报 model version mismatch。
+# 其余依赖：pip install -r requirements-board.txt
+
+numpy>=1.24
+opencv-python-headless>=4.8   # 必须 headless 版！普通版自带 Qt 会和 PyQt5
+                              # 抢 xcb 插件，GUI 启动直接段错误
+Pillow>=10.0
+gpiod>=1.5                    # GPIO 控制（或 apt install python3-libgpiod）
+                              # door.py 已兼容 v1（1.6）与 v2（2.x）两套 API
+
+# PyQt5 板端建议用 apt 安装（pip 源码编译 2 小时起步）：
+#   sudo apt install python3-pyqt5 fonts-wqy-microhei
+# 中文显示：fonts-wqy-microhei 提供中文字体（draw.py 自动查找）

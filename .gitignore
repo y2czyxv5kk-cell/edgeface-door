@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# LLM 模型文件（超过 GitHub 100MB 限制，下载方式见 README「大模型后端」）
+assets/models/llm/*.gguf
+
+# 运行时日志（识别记录、agent 事件日志，克隆后演示会自动生成）
+assets/logs/*.log
+assets/logs/*.jsonl
+
+# 诊断脚本的临时产物（抽帧图片等）
+diagnostics/*.jpg
+diagnostics/*.png
+
+# IDE / 系统文件
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini
